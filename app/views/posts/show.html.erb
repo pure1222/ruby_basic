@@ -1,0 +1,15 @@
+<%= @post.created_at %>
+<%= @post.content %>
+<% if @current_user.id == @post.user_id %>
+  <%= link_to("編集","/posts/#{@post.id}/edit") %>
+  <%= link_to("削除","/posts/#{@post.id}/destroy",{method:"post"}) %>
+<% end %>
+いいねされた数
+<%= @likes.count %>
+<% if Like.find_by(user_id: @current_user.id,post_id: @post.id) %>
+  <%= link_to("いいね済み","/likes/#{@post.id}/destroy",{method:"post"}) %>
+<% else %>
+  <%= link_to("いいねしていません","/likes/#{@post.id}/create",{method:"post"}) %>
+<% end %>
+投稿者名
+<%= @user.name %>

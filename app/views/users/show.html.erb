@@ -1,0 +1,16 @@
+<img src ="<%= "/user_images/#{@user.image_name}"%>">
+<%= @user.name %>
+<%= @user.email %>
+<% if @current_user.id == @user.id %>
+  <%= link_to("編集","/users/#{@user.id}/edit") %>
+  <%= link_to("削除","/users/#{@user.id}/destroy",{method:"user"}) %>
+<% end %>
+投稿一覧
+<% @user.posts.each do |post| %>
+  <%= post.content %>
+<% end %>
+いいねした投稿
+<% @likes.each do |like| %>
+  <% post = Post.find_by(id: like.post_id) %>
+  <%= post.content %>
+<% end %>

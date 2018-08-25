@@ -1,0 +1,8 @@
+<%= form_tag("/users/#{@user.id}/update",{multipart: true}) do %>
+  <input name="name" value="<%= @user.name %>">
+  <input name="email" value="<%= @user.email %>">
+  <input name="image" type="file">
+  <% if @current_user.id == @user.id %>
+    <input type="submit" value="編集">
+  <% end %>
+<% end %>
