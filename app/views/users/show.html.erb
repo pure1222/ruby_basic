@@ -1,7 +1,7 @@
 <img src ="<%= "/user_images/#{@user.image_name}"%>">
 <%= @user.name %>
 <%= @user.email %>
-<% if @current_user.id == @user.id %>
+<% if @current_user.id == @user.id || @current_user.admin? %>
   <%= link_to("編集","/users/#{@user.id}/edit") %>
   <%= link_to("削除","/users/#{@user.id}/destroy",{method:"user"}) %>
 <% end %>

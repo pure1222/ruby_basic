@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>職人ドットコム</title>
+    <title>nogo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +12,7 @@
   <body>
     <header>
       <div class="header-logo">
-        <%= link_to("職人ドットコム","/") %>
+        <%= link_to("nogo","/") %>
       </div>
       <ul class="header-menus">
         <% if @current_user %>
@@ -35,7 +35,7 @@
           <li>
             <%= link_to("ユーザー登録","/users/new") %>
           </li>
-
+        
           <li>
             <%= link_to("ログイン","/login") %>
           </li>

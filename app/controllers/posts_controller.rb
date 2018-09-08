@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :ensure_correct_user,{only:[:edit,:destroy,:update]}
   
   def index
-    @posts = Post.all
+    @posts = Post.paginate(page: params[:page])
   end
   def new
     @post = Post.new
