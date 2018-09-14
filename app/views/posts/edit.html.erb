@@ -1,5 +1,7 @@
 編集する
 <%= form_tag("/posts/#{@post.id}/update") do %>
+<input name="title" value="<%= @post.title %>">
 <textarea name="content"><%= @post.content %></textarea>
+<input name="price" value="<%= @post.price %>">
 <input type="submit" value="保存">
 <% end %>

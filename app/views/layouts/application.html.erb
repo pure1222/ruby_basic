@@ -15,15 +15,13 @@
         <%= link_to("nogo","/") %>
       </div>
       <ul class="header-menus">
-        <% if @current_user %>
-          <li>
-            <%= link_to(@current_user.name,"/users/#{@current_user.id}") %>
-          </li>
+        <% if @current_user && @current_user.admin? %>
           <li>
             <%= link_to("投稿する","/posts/new") %>
           </li>
+        <% end %>
           <li>
-            <%= link_to("投稿一覧","/posts/index") %>
+            <%= link_to("メニュー","/posts/index") %>
           </li>
           <li>
             <%= link_to("ログアウト", "/logout", {method: :post}) %>
@@ -31,7 +29,6 @@
           <li>
             <%= link_to("ユーザー一覧","/users/index") %>
           </li>
-        <% else %>
           <li>
             <%= link_to("ユーザー登録","/users/new") %>
           </li>
@@ -39,7 +36,6 @@
           <li>
             <%= link_to("ログイン","/login") %>
           </li>
-        <% end %>
         
         
         
