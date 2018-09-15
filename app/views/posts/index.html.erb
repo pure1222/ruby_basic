@@ -1,11 +1,9 @@
-投稿一覧
+メニュー
 <%= will_paginate %>
 <% @posts.each do |post| %>
-  <% form_tag("/cart/#{post.id}") do <%>
     <h2><%= link_to(post.title,"/posts/#{post.id}") %></h2>
     <img src="<%= "/post_images/#{post.image_name}" %>">
     <%= "#{post.price}円" %>
-    <input type="submit" value="カートへ">
-  <% end %>
+    <%= link_to "カートへ", carts_add_item_path(id: post.id), {method:"post"} %>
 <% end %>
 <%= will_paginate %>

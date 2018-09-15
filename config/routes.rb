@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   post "likes/:id/create" => "likes#create"
   post "likes/:post_id/destroy" => "likes#destroy"
   
-  post "carts/add_item" => "carts#add_item"
+  get "carts/:id" => "carts#show"
+  post "carts/add_item" => "carts#add_item",as:'carts_add_item'
+  post "carts/:id/destroy" => "carts#destroy"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

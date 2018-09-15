@@ -1,0 +1,12 @@
+<% if @items.blank? %>
+  何もありません
+<% end %>
+<% total_price = 0 %>
+<% @items.each do |item| %>
+    <% post = Post.find_by(id: item.post_id) %>
+    <h2><%= post.title %></h2>
+    <% total_price += post.price %>
+    <%= "#{post.price}円" %>
+    <%= link_to("カートから外す","/carts/#{item.post_id}/destroy",method:"post") %>
+<% end %>
+<%= "合計金額は#{total_price}円です" %>
