@@ -1,0 +1,16 @@
+<%= form_tag("/guests/info") do %>
+  <h2>お客様情報</h2>
+  <input name="last" value="姓">
+  <input name="first" value="名">
+  <input name="last_furigana" value="せい">
+  <input name="first_furigana" value="めい">
+  〒<input name="zip_code1">-<input name="zip_code2">
+  <h3><input name="prefectures" value="都道府県"></h3>
+  <h3><input name="municipalities" value="市区町村"></h3>
+  <h3><input name="address" value="番地・ビル名"></h3>
+  電話番号 ※必須
+  <h3><input name="phone"></h3>
+  メールアドレス　※必須
+  <h3><input name="email"></h3>
+  <h2><input type="submit" value="次へ"></h2>
+<% end %>

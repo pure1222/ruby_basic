@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  firstname: MyString
+  lastname: MyString
+  first_furigana: MyString
+  last_furigana: MyString
+  first_zip_code: 1
+  last_zip_code: 1
+  prefectures: MyString
+  municipalities: MyString
+
+two:
+  firstname: MyString
+  lastname: MyString
+  first_furigana: MyString
+  last_furigana: MyString
+  first_zip_code: 1
+  last_zip_code: 1
+  prefectures: MyString
+  municipalities: MyString

@@ -6,7 +6,8 @@ class CartsController < ApplicationController
         @item = Item.new(post_id: params[:id],cart_id: session[:cart_id])
         @item.save
         flash[:notice]="カートに入りました"
-        redirect_to("/carts/#{session[:cart_id]}")
+        redirect_to("/posts/index")
+        flash[:notice] = "カートへ追加しました"
         
     end
     def destroy
