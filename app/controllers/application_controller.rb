@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
       if session[:cart_id]
         @cart = Cart.find_by(id: session[:cart_id])
       else
-        @cart = Cart.create
+        @cart = Cart.create(total_price:0)
         session[:cart_id] = @cart.id
       end
     end

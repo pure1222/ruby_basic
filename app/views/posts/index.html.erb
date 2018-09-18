@@ -4,6 +4,6 @@
     <h2><%= link_to(post.title,"/posts/#{post.id}") %></h2>
     <img src="<%= "/post_images/#{post.image_name}" %>">
     <%= "#{post.price}円" %>
-    <%= link_to "カートへ", carts_add_item_path(id: post.id), {method:"post"} %>
+    <%= link_to "カートへ", carts_add_item_path(id: post.id,price: post.price), {method:"post"} %>
 <% end %>
 <%= will_paginate %>
