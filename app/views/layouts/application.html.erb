@@ -15,9 +15,20 @@
         <%= link_to("nogo","/") %>
       </div>
       <ul class="header-menus">
+        
+          
+          
         <% if @current_user && @current_user.admin? %>
           <li>
-            <%= link_to("投稿する","/posts/new") %>
+            <%= link_to("投稿する（管理ユーザー）","/posts/new") %>
+          </li>
+        <% elsif @current_user %>
+          <li>
+            <%= "こんにちは、#{@current_user.name}さん" %>
+          </li>
+        <% else %>
+          <li>
+            <%= "こんにちは、ゲストさん" %>
           </li>
         <% end %>
           <li>
