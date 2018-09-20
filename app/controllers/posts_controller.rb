@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
   def create
-    @post = Post.new(content: params[:content],user_id: @current_user.id,title: params[:title],price: params[price])
+    @post = Post.new(content: params[:content],user_id: @current_user.id,title: params[:title],price: params[:price],image_name: "default_post.jpg")
       if params[:image]
          @post.image_name = "#{@post.id}.jpg"
          image = params[:image]
@@ -37,8 +37,13 @@ class PostsController < ApplicationController
     @post.content = params[:content]
     @post.title = params[:title]
     @post.price = params[:price]
+    if params[:image]
+      @post.image_name = "#{@post.id}.jpg"
+      image = params[:image]
+      File.binwrite("public/post_images/#{@post.image_name}", image.read)
+    end
     if @post.save
-      flash[:notice] = "投稿を編集しました"
+      flash[:notice] = "編集を投稿しました"
       redirect_to("/posts/index")
     else
       render("posts/edit")

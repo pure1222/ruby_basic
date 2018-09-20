@@ -11,4 +11,6 @@
 <% end %>
 <h3><%= "合計金額は#{@cart.total_price}円です" %></h3>
 <%= link_to("買い物を続ける","/posts/index") %>
-<%= link_to("レジへ進む","/guests/form") %>
+<% if @items.present? %>
+  <%= link_to("レジへ進む","/guests/form") %>
+<% end %>

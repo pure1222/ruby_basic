@@ -1,7 +1,9 @@
 編集する
-<%= form_tag("/posts/#{@post.id}/update") do %>
+<%= form_tag("/posts/#{@post.id}/update",{multipart: true}) do %>
 <input name="title" value="<%= @post.title %>">
 <textarea name="content"><%= @post.content %></textarea>
 <input name="price" value="<%= @post.price %>">
+<p>画像</p>
+<input name="image" type="file">
 <input type="submit" value="保存">
 <% end %>
