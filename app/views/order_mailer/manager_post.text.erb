@@ -1,0 +1,5 @@
+<% @items.each do |item| %>
+    <% post = Post.find_by(id: item.post_id) %>
+    <%= "注文商品#{post.title}" %>
+    <%= "#{post.price}円" %>
+<% end %>

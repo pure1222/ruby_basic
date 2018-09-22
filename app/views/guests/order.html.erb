@@ -1,0 +1,6 @@
+<%= "#{@guest.lastname}#{@guest.firstname}さん、ご注文ありがとうございます。" %>
+
+<p>注文完了メールが送られます。ご確認ください。</p>
+
+<% destroy_cart_session %>
+<% create_cart %>

@@ -18,5 +18,4 @@
 <% end %>
 <h2>合計金額</h2>
 <%= "#{@cart.total_price}円" %>
-<% destroy_cart_session %>
-<% create_cart %>
+<%= link_to("注文する","/guests/#{@guest.id}") %>
