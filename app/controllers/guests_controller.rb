@@ -9,6 +9,7 @@ class GuestsController < ApplicationController
       address: params[:address],phone_number: params[:phone],email: params[:email],cart_id: session[:cart_id]
     )
     if @guest.save
+      OrderMailer.order_confirm(@guest).deliver
       flash[:notice] = "お客様情報を入力できました"
       redirect_to("/guests/pay_confirm")
     else
