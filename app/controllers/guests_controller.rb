@@ -10,22 +10,16 @@ class GuestsController < ApplicationController
     )
     if @guest.save
       flash[:notice] = "お客様情報を入力できました"
-      redirect_to("/guests/pay_form")
+      redirect_to("/guests/pay_confirm")
     else
       flash[:notice] = "全て入力してください"
       render("guests/form")
     end
   end
-  def pay
+  def pay_confirm
+    @items = Item.where(cart_id: session[:cart_id])
     @cart = Cart.find_by(id: session[:cart_id])
-    Payjp.api_key = 'sk_test_2af2e4ebf9a54605060ff31b'
-    charge = Payjp::Charge.create(
-      :amount => @cart.total_price,
-      :card => params['payjp-token'],
-      :currency => 'jpy',
-    )
-    flash[:notice] = "ありがとうございました"
-    redirect_to("/posts/index")
+    @guest = Guest.find_by(cart_id: session[:cart_id])
   end
   def nothing_cart
     @item = Item.find_by(cart_id: session[:cart_id])

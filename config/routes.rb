@@ -29,9 +29,9 @@ Rails.application.routes.draw do
   post "carts/add_item" => "carts#add_item",as:'carts_add_item'
   post "carts/:id/destroy" => "carts#destroy",as:'carts_destroy'
   
-  
+
   get "guests/form" => "guests#form"
   post "guests/pay_form" => "guests#pay_form"
-  post "guests/pay" => "guests#pay"
+  get "guests/pay_confirm" => "guests#pay_confirm"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

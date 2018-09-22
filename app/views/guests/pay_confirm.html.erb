@@ -1,0 +1,22 @@
+<h2>注文内容の確認</h2>
+
+<h2>お客様情報</h2>
+<%= @guest.lastname %>
+<%= @guest.firstname %>
+<%= @guest.first_zip_code %>
+<%= @guest.last_zip_code %>
+<%= @guest.prefectures %>
+<%= @guest.municipalities %>
+<%= @guest.address %>
+<%= @guest.phone_number %>
+<%= @guest.email %>
+<h2>購入品と金額</h2>
+<% @items.each do |item| %>
+  <% post = Post.find_by(id: item.post_id) %>
+  <%= post.title %>
+  <%= "#{post.price}円" %>
+<% end %>
+<h2>合計金額</h2>
+<%= "#{@cart.total_price}円" %>
+<% destroy_cart_session %>
+<% create_cart %>
