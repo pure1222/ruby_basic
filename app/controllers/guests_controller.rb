@@ -32,6 +32,6 @@ class GuestsController < ApplicationController
     @guest = Guest.find_by(id: params[:id])
     @items = Item.where(cart_id: session[:cart_id])
     OrderMailer.order_confirm(@guest).deliver
-    OrderMailer.manager_post(@items).deliver
+    OrderMailer.manager_post(@items,@guest).deliver
   end
 end

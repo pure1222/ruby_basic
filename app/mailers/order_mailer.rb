@@ -9,7 +9,8 @@ class OrderMailer < ApplicationMailer
     @guest = guest
      mail to: guest.email, subject: "{no go}ご購入ありがとうございます"
   end
-  def manager_post(items)
+  def manager_post(items,guest)
+    @guest = guest
     @items = items
     mail to: "msyaaa634@yahoo.co.jp", subject: "注文情報"
   end
