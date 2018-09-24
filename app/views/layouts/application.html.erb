@@ -34,9 +34,11 @@
           <li>
             <%= link_to("メニュー","/posts/index") %>
           </li>
+        <% if @current_user %>
           <li>
             <%= link_to("ログアウト", "/logout", {method: :post}) %>
           </li>
+        <% end %>
           <li>
             <%= link_to("ユーザー一覧","/users/index") %>
           </li>

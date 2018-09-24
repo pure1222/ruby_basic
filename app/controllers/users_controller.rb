@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user,{only:[:edit,:update]}
+  before_action :authenticate_user,{only:[:edit,:update,:logout]}
   before_action :forbit_login_user,{only:[:new,:create,:login,:login_form]}
   before_action :ensure_correct_user,{only:[:edit,:update]}
 
