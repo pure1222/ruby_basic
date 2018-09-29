@@ -1,3 +1,25 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+img.content-image{
+    width: 200px;
+　　height: 100px;
+}
+h2.menu{
+    border-bottom:5px solid; border-color: #FFFF99;
+    padding: 10px;
+    font-size: 25px;
+}
+.post-title{
+    color: #333300;
+    text-align: center;
+}
+.post-content{
+    float:left;
+    width:25%;
+    height:200px;
+}
+.post{
+    width:100%;
+}

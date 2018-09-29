@@ -7,17 +7,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+  </script>
+<![endif]-->
   </head>
 
   <body>
-    <header>
-      <div class="header-logo">
-        <%= link_to("no go","/") %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to("no go","/", id: "logo") %>
       </div>
-      <ul class="header-menus">
-        
-          
-          
+      <ul class="nav navbar-nav navbar-right">
         <% if @current_user && @current_user.admin? %>
           <li>
             <%= link_to("投稿する（管理ユーザー）","/posts/new") %>
@@ -28,7 +29,7 @@
           </li>
         <% else %>
           <li>
-            <%= "こんにちは、ゲストさん" %>
+            <%= link_to "こんにちは、ゲストさん", "#" %>
           </li>
         <% end %>
           <li>
@@ -52,14 +53,26 @@
         <li>
           <%= link_to("お買い物カート","/carts/#{session[:cart_id]}") %>
         </li>
-        
-        
-
       </ul>
     </header>
     <% if flash[:notice] %>
       <%= flash[:notice] %>
     <% end %>
-    <%= yield %>
+    <div container>
+      <%= yield %>
+      </div>
+      <footer class="footer">
+  <small>
+    
+  </small>
+
+    <ul>
+      <li><%= link_to "About",   '#' %></li>
+      <li><%= link_to "Contact", '#' %></li>
+      <li><a href="http://news.railstutorial.org/">News</a></li>
+    </ul>
+    
+</footer>
+    
   </body>
 </html>

@@ -1,9 +1,15 @@
-メニュー
+<h2 class="menu">メニュー</h2>
 <%= will_paginate %>
+<div class="post">
 <% @posts.each do |post| %>
-    <h2><%= link_to(post.title,"/posts/#{post.id}") %></h2>
-    <img src="<%= "/post_images/#{post.image_name}" %>">
-    <%= "#{post.price}円" %>
-    <%= link_to "カートへ", carts_add_item_path(id: post.id,price: post.price), {method:"post"} %>
+    <div class="post-content">
+      <%= link_to post.title,"/posts/#{post.id}", class: "post-title" %>
+      <img src="<%= "/post_images/#{post.image_name}" %>"style="border:solid 1px #ccc;padding:4px;" class = "content-image">
+      <div class="post-price">
+        <%= "#{post.price}円" %>
+      </div>
+      <%= link_to "+カートへ", carts_add_item_path(id: post.id,price: post.price), {method:"post"} %>
+    </div>
 <% end %>
+</div>
 <%= will_paginate %>

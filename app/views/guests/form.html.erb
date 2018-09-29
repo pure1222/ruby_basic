@@ -1,4 +1,4 @@
-<%= form_tag("/guests/pay_form") do %>
+<%= form_tag guests_pay_form_path,method: :get do %>
   <h2>お客様情報</h2>
   <input name="last" value="姓">
   <input name="first" value="名">
@@ -12,5 +12,8 @@
   <br><input name="phone">
   <br>メールアドレス　※必須
   <br><input name="email">
+  
+  既にお客様が持っている食材を入力してください。
+  <input name="request">
   <input type="submit" value="次へ">
 <% end %>

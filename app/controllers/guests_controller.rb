@@ -8,16 +8,10 @@ class GuestsController < ApplicationController
       first_zip_code: params[:zip_code1],last_zip_code: params[:zip_code2],prefectures: params[:prefectures],municipalities: params[:municipalities],
       address: params[:address],phone_number: params[:phone],email: params[:email],cart_id: session[:cart_id]
     )
-    if @guest.save
-      
-      flash[:notice] = "お客様情報を入力できました"
-      redirect_to("/guests/pay_confirm")
-    else
-      flash[:notice] = "全て入力してください"
-      render("guests/form")
-    end
+    @items = Item.where(cart_id: session[:cart_id])
+    @cart = Cart.find_by(id: session[:cart_id])
   end
-  def pay_confirm
+  def confirm
     @items = Item.where(cart_id: session[:cart_id])
     @cart = Cart.find_by(id: session[:cart_id])
     @guest = Guest.find_by(cart_id: session[:cart_id])
@@ -29,9 +23,22 @@ class GuestsController < ApplicationController
     end
   end
   def order
-    @guest = Guest.find_by(id: params[:id])
+
     @items = Item.where(cart_id: session[:cart_id])
-    OrderMailer.order_confirm(@guest).deliver
-    OrderMailer.manager_post(@items,@guest).deliver
+    @guest = Guest.new(
+      firstname: params[:first],lastname: params[:last],first_furigana: params[:first_furigana],last_furigana: params[:last_furigana],
+      first_zip_code: params[:zip_code1],last_zip_code: params[:zip_code2],prefectures: params[:prefectures],municipalities: params[:municipalities],
+      address: params[:address],phone_number: params[:phone],email: params[:email],cart_id: session[:cart_id]
+    )
+    if @guest.save
+      OrderMailer.order_confirm(@guest).deliver
+      OrderMailer.manager_post(@items,@guest).deliver
+      flash[:notice]="お客様情報を入力しました"
+      redirect_to("/guests/confirm")
+    else
+      flash[:notice]="入力されていない情報があります"
+      render("guests/pay_form")
+    end
+
   end
 end

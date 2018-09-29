@@ -2,8 +2,11 @@
 
 <p>お客様情報</p>
 <p>
+
 <%= @guest.lastname %>
 <%= @guest.firstname %>
+<%= @guest.last_furigana %>
+<%= @guest.first_furigana %>
 <%= @guest.first_zip_code %>
 <%= @guest.last_zip_code %>
 <%= @guest.prefectures %>
@@ -22,4 +25,6 @@
 </p>
 <p>合計金額</p>
 <p><%= "#{@cart.total_price}円" %></p>
-<%= link_to("注文を確定する","/guests/#{@guest.id}") %>
+<%= link_to "注文を確定する", guests_order_path(last: @guest.lastname, first: @guest.firstname, last_furigana: @guest.last_furigana, first_furigana: @guest.first_furigana,
+  zip_code1: @guest.first_zip_code, zip_code2: @guest.last_zip_code, prefectures: @guest.prefectures, municipalities: @guest.municipalities, address: @guest.address, phone: @guest.phone_number,
+  email: @guest.email), {method: "post"} %>

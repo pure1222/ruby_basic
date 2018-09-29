@@ -22,7 +22,7 @@ class CartsController < ApplicationController
         @item.destroy
         @cart = Cart.find_by(id: session[:cart_id])
         total_price = @cart.total_price.to_i
-        total_price -= params[:price].to_i
+        total_price -= @post.price.to_i
         @cart.total_price = total_price
         @cart.save
         

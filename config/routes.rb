@@ -31,8 +31,9 @@ Rails.application.routes.draw do
   
 
   get "guests/form" => "guests#form"
-  post "guests/pay_form" => "guests#pay_form"
+  get "guests/pay_form" => "guests#pay_form",as:'guests_pay_form'
   get "guests/pay_confirm" => "guests#pay_confirm"
-  get "guests/:id" => "guests#order"
+  post "guests/order" => "guests#order",as:'guests_order'
+  get "guests/confirm" => "guests#confirm"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

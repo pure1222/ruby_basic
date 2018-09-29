@@ -2,15 +2,14 @@
   何もありません
 <% end %>
 <h2>お買い物カート</h2>
-
 <% @items.each do |item| %>
     <% post = Post.find_by(id: item.post_id) %>
-    <h2><%= post.title %></h2>
-    <%= "#{post.price}円" %>
-    <%= link_to "カートから外す", carts_destroy_path(id: post.id,price: post.price), {method:"post"} %>
+    <br><%= post.title %>
+    <br><%= "#{post.price}円" %>
+    <%= link_to "カートから外す","/carts/#{post.id}/destroy", {method:"post"} %>
 <% end %>
 <h3><%= "合計金額は#{@cart.total_price}円です" %></h3>
-<%= link_to("買い物を続ける","/posts/index") %>
+<%= link_to "買い物を続ける","/posts/index", class: "btn btn-lg btn-primary" %>
 <% if @items.present? %>
-  <%= link_to("レジへ進む","/guests/form") %>
+  <%= link_to "レジへ進む","/guests/form", class: "btn btn-lg btn-success" %>
 <% end %>
