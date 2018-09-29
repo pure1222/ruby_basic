@@ -1,6 +1,14 @@
+
+
 <%= "#{@guest.lastname}さん、" %>
 no goをご利用いただきありがとうございます。
 
+<% @items.each do |item| %>
+  <% post = Post.find_by(id: item.post_id) %>
+  注文した商品：<%= post.title %>
+  値段：<%= "#{post.price}円" %>
+<% end %>
+<%= "合計金額：#{@cart.total_price}" %>
 支払方法：着払い
 
 商品の発送までしばらくお待ちください。

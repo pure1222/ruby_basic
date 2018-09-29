@@ -5,8 +5,10 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.order_confirm.subject
   #
-  def order_confirm(guest)
+  def order_confirm(guest,items,cart)
     @guest = guest
+    @items = items
+    @cart = cart
      mail to: guest.email, subject: "{no go}ご購入ありがとうございます"
   end
   def manager_post(items,guest)

@@ -14,6 +14,8 @@
 <%= @guest.address %>
 <%= @guest.phone_number %>
 <%= @guest.email %>
+既にお客様が持っている食材
+<%= @guest.request_food %>
 </p>
 <p>購入品と金額</p>
 <p>
@@ -27,4 +29,4 @@
 <p><%= "#{@cart.total_price}円" %></p>
 <%= link_to "注文を確定する", guests_order_path(last: @guest.lastname, first: @guest.firstname, last_furigana: @guest.last_furigana, first_furigana: @guest.first_furigana,
   zip_code1: @guest.first_zip_code, zip_code2: @guest.last_zip_code, prefectures: @guest.prefectures, municipalities: @guest.municipalities, address: @guest.address, phone: @guest.phone_number,
-  email: @guest.email), {method: "post"} %>
+  email: @guest.email, request_food: @guest.request_food), {method: "post"} %>

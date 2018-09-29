@@ -8,4 +8,5 @@
 <%= "郵便番号：#{@guest.first_zip_code}#{@guest.last_zip_code}" %>
 <%= "電話番号：#{@guest.phone_number}" %>
 <%= "メール：#{@guest.email}" %>
-<%= "予測注文時間：#{@guest.created_at}" %>
+<%= "注文時間：#{@guest.created_at}" %>
+<%= "持っている食材：#{@guest.request_food}" %>

@@ -2,6 +2,12 @@
 
 <p>no goをご利用いただきありがとうございます。</p>
 
+<% @items.each do |item| %>
+  <% post = Post.find_by(id: item.post_id) %>
+  <p>注文した商品：<%= post.title %></p>
+  <p>値段：<%= "#{post.price}円" %></p>
+<% end %>
+<%= "合計金額：#{@cart.total_price}" %>
 <p>支払方法：着払い</p>
 
 <p>商品の発送までしばらくお待ちください。</p>
